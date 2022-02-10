@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react'
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import './App.css'
+import Header from './components/Header'
 import Title from './components/Title'
 import HomePage from './pages/HomePage'
+import SearchedComponents from './pages/SearchedComponents'
 import { Quote } from './Types'
 
 
@@ -17,8 +19,11 @@ function App() {
   }, [])
   return (
     <div className="App">
+      <Header />
       <Routes>
-        <Route path='/' element={<HomePage quotes={quotes} />} />
+        <Route index element={<Navigate replace to='/quotes' />} />
+        <Route path='/quotes' element={<HomePage quotes={quotes} />} />
+        <Route path='/quotes/:author' element={<SearchedComponents />} />
       </Routes>
     </div>
   )
