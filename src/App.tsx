@@ -3,6 +3,7 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import './App.css'
 import Header from './components/Header'
 import Title from './components/Title'
+import AdditionalInfo from './pages/AdditionalInfo'
 import AddNewQuote from './pages/AddNewQuote'
 import HomePage from './pages/HomePage'
 import SearchedComponents from './pages/SearchedComponents'
@@ -27,6 +28,7 @@ function App() {
         <Route index element={<Navigate replace to='/quotes' />} />
         <Route path='/quotes' element={<HomePage quotes={quotes} />} />
         <Route path='/quotes/:author' element={<SearchedComponents />} />
+        <Route path='/quotes/details/:id' element={<AdditionalInfo />} />
       </Routes>
     </div>
   )
