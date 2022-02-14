@@ -9,6 +9,7 @@ body{
   font-family: sans-serif;
   height:100vh;
   /* width: 100vw; */
+  position: relative;
 }
 .title{
   color:#99154E;
@@ -17,11 +18,13 @@ body{
 }
 .home-page{
   background-color: #FDEFF4;
-  height:100%;
+  height:100vh;
   padding:50px;
   display: grid;
   gap:40px;
   place-items: center;
+  overflow: auto;
+  
 }
 .quote-card-container{
   width: 100%;

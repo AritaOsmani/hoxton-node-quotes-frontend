@@ -9,7 +9,7 @@ export default function QuoteCard({ quote }: Props) {
         <div className='quote-card'>
             <i className="fas fa-quote-left"></i>
             <span className='quote-content'>{quote.content}</span>
-            <span className='author'>{`- ${quote.author}`}</span>
+            <span className='author'>{`- ${quote.author.firstName} ${quote.author.lastName}`}</span>
         </div>
     )
 }

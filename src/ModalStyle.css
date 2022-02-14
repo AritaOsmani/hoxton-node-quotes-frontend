@@ -1,0 +1,58 @@
+
+.modal-wrapper{
+    position: absolute;
+    top:0;
+    left:0;
+    background-color: rgba(0, 0, 0,0.3);
+    z-index: 10;
+    height:100vh;
+    width: 100vw;
+    display: grid;
+    place-items: center;
+}
+.add-quote-modal{
+    background-color: white;
+    display: grid;
+    gap:30px;
+    padding: 40px;
+    position: relative;
+    border-radius: 5px;
+}
+.add-quote-modal h2{
+    color:#99154E;
+}
+.add-form{
+    display: grid;
+    gap:20px;
+}
+.add-form input,textarea{
+    border:solid 1px #99154E;
+    outline: none;
+    padding:5px;
+    border-radius: 5px;
+}
+.add-form button{
+    justify-self: center;
+    padding:5px 20px;
+    border:none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #99154E;
+    color:white;
+}
+.add-form button:hover{
+    border:solid 1px #99154E;
+    background-color: unset;
+    color:#99154E;
+    
+}
+.close-btn{
+    position: absolute;
+    top:0;
+    right:0;
+    padding:10px;
+    border: none;
+    background-color: unset;
+    color:#99154E;
+    cursor: pointer;
+}
