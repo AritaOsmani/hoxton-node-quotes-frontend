@@ -27,7 +27,7 @@ export default function AddNewQuote({ setModal, quotes, setQuotes, modal }: Prop
     }
 
     return (
-        <div className='modal-wrapper' style={{ overflow: modal ? 'hidden' : undefined }}>
+        <div className='modal-wrapper' >
             <div className='add-quote-modal'>
                 <button onClick={() => {
                     setModal('')

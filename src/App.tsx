@@ -20,8 +20,11 @@ function App() {
     fetch('http://localhost:4000/quotes').then(res => res.json())
       .then(res => setQoutes(res))
   }, [])
+
+  const appContainerStyle = modal ? { overflow: 'hidden', height: '100vh' } : undefined
+
   return (
-    <div className="App">
+    <div className="App" style={appContainerStyle}>
       {modal === 'add' && <AddNewQuote setModal={setModal} quotes={quotes} setQuotes={setQoutes} modal={modal} />}
       <Header setModal={setModal} />
       <Routes>
