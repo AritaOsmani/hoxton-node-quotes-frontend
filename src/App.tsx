@@ -22,7 +22,7 @@ function App() {
   }, [])
   return (
     <div className="App">
-      {modal === 'add' && <AddNewQuote setModal={setModal} quotes={quotes} setQuotes={setQoutes} />}
+      {modal === 'add' && <AddNewQuote setModal={setModal} quotes={quotes} setQuotes={setQoutes} modal={modal} />}
       <Header setModal={setModal} />
       <Routes>
         <Route index element={<Navigate replace to='/quotes' />} />

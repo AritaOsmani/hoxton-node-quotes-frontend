@@ -5,10 +5,11 @@ import { AddForm, Quote } from '../Types'
 type Props = {
     setModal: React.Dispatch<React.SetStateAction<string>>
     quotes: Quote[]
-    setQuotes: React.Dispatch<React.SetStateAction<Quote[]>>
+    setQuotes: React.Dispatch<React.SetStateAction<Quote[]>>,
+    modal: string
 }
 
-export default function AddNewQuote({ setModal, quotes, setQuotes }: Props) {
+export default function AddNewQuote({ setModal, quotes, setQuotes, modal }: Props) {
 
     function addNewQuote(firstName: string, lastName: string, born: number, death: number, image: string, content: string) {
         return fetch(`http://localhost:4000/quotes`, {
@@ -26,7 +27,7 @@ export default function AddNewQuote({ setModal, quotes, setQuotes }: Props) {
     }
 
     return (
-        <div className='modal-wrapper'>
+        <div className='modal-wrapper' style={{ overflow: modal ? 'hidden' : undefined }}>
             <div className='add-quote-modal'>
                 <button onClick={() => {
                     setModal('')
