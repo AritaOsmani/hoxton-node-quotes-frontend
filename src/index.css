@@ -11,7 +11,7 @@ img{
 body{
   font-family: sans-serif;
   min-height:100vh;
-  min-width: 100vw;
+  /* min-width: 100vw; */
   position: relative;
 }
 .title{
@@ -21,7 +21,7 @@ body{
 }
 .home-page{
   background-color: #FDEFF4;
-  /* height:100%; */
+  min-height:100vh;
   padding:50px;
   display: grid;
   gap:40px;
@@ -48,6 +48,21 @@ body{
   padding:20px;
   gap:10px;
   cursor: pointer;
+  position: relative;
+}
+.delete-btn{
+  position: absolute;
+  top:0;
+  right:2px;
+  border: none;
+  background-color: unset;
+  color:#99154E;
+  cursor:pointer;
+  display: none;
+  padding:5px;
+}
+.quote-card:hover .delete-btn{
+  display: block;
 }
 .fa-quote-left{
   font-size: 30px;

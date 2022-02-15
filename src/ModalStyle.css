@@ -58,3 +58,34 @@
     color:#99154E;
     cursor: pointer;
 }
+
+.confirmation-modal{
+    background-color: white;
+    display: grid;
+    gap:30px;
+    padding:40px;
+    border-radius:5px;
+
+}
+.confirmation-buttons{
+    display: grid;
+    grid-template-columns: auto auto;
+    gap:15px;
+    place-content: center;
+}
+.yes-btn,.no-btn{
+    padding:5px 20px;
+    border-radius: 5px;
+    width: 100px;
+    cursor: pointer;
+}
+.yes-btn{
+    border:solid 1px #99154E;
+    background-color: unset;
+    color:#99154E;
+}
+.no-btn{
+    border: none;
+    background-color: #99154E;
+    color:white;
+}

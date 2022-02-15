@@ -49,12 +49,12 @@ export default function AddNewQuote({ setModal, quotes, setQuotes, modal }: Prop
                     setModal('')
 
                 }}>
-                    <input type="text" name='firstName' placeholder='First name' />
-                    <input type="text" name="lastName" placeholder='Last name' />
-                    <input type="text" name='bornYear' placeholder='Year of birth' />
+                    <input type="text" name='firstName' placeholder='First name' required />
+                    <input type="text" name="lastName" placeholder='Last name' required />
+                    <input type="text" name='bornYear' placeholder='Year of birth' required />
                     <input type="text" name="deathYear" placeholder='Year of death' />
-                    <input type="text" name="imgURL" placeholder='Image URL' />
-                    <textarea name="content" id="" cols={30} rows={5} placeholder='Enter the quote....' ></textarea>
+                    <input type="text" name="imgURL" placeholder='Image URL' required />
+                    <textarea name="content" id="" cols={30} rows={5} placeholder='Enter the quote....' required ></textarea>
                     <button type='submit'>Submit</button>
                 </form>
             </div>
