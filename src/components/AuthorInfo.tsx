@@ -38,6 +38,10 @@ export default function AuthorInfo({ quote }: Props) {
                     <span className='info-key'>Age:</span>
                     <span className='info-val'>{age}</span>
                 </div>
+                <div className='author-info_bio'>
+                    <span className='info-key'>Bio:</span>
+                    <p>{quote.author.bio}</p>
+                </div>
             </div>
         </div>
     )

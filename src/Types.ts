@@ -6,7 +6,8 @@ export type Quote = {
         lastName: string
         born: number
         death?: number
-        image: string
+        image: string,
+        bio: string
     }
 }
 
