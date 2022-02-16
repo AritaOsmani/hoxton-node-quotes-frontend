@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import '../ModalStyle.css'
 import { AddForm, Quote } from '../Types'
 
@@ -10,6 +11,7 @@ type Props = {
 }
 
 export default function AddNewQuote({ setModal, quotes, setQuotes, modal }: Props) {
+    const navigate = useNavigate()
 
     function addNewQuote(firstName: string, lastName: string, born: number, death: number, image: string, content: string) {
         return fetch(`http://localhost:4000/quotes`, {
@@ -20,9 +22,17 @@ export default function AddNewQuote({ setModal, quotes, setQuotes, modal }: Prop
             body: JSON.stringify({ firstName: firstName, lastName: lastName, born: born, death: death, image: image, content: content })
         }).then(res => res.json())
             .then(res => {
-                const newQuotes = JSON.parse(JSON.stringify(quotes))
-                newQuotes.push(res)
-                setQuotes(newQuotes)
+                if (res.ok) {
+                    const newQuotes = JSON.parse(JSON.stringify(quotes))
+                    newQuotes.push(res)
+                    setQuotes(newQuotes)
+                } else {
+                    throw Error('Something went wrong! Please check the input types.')
+                }
+
+            }).catch(err => {
+                alert(err)
+
             })
     }
 
@@ -43,6 +53,7 @@ export default function AddNewQuote({ setModal, quotes, setQuotes, modal }: Prop
                     const death = Number(formEl.deathYear.value);
                     const image = formEl.imgURL.value;
                     const quoteContent = formEl.content.value;
+
 
                     addNewQuote(authorFirstName, authorLastName, born, death, image, quoteContent)
                     formEl.reset()

@@ -33,7 +33,7 @@ function App() {
       <Routes>
         <Route index element={<Navigate replace to='/quotes' />} />
         <Route path='/quotes' element={<HomePage quotes={quotes} setSelectedQuote={setSelectedQuote} setModal={setModal} />} />
-        <Route path='/quotes/:author' element={<SearchedComponents />} />
+        <Route path='/quotes/:author' element={<SearchedComponents setSelectedQuote={setSelectedQuote} setModal={setModal} />} />
         <Route path='/quotes/details/:id' element={<AdditionalInfo />} />
       </Routes>
     </div>
