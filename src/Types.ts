@@ -23,5 +23,6 @@ export type AddForm = HTMLFormElement & {
     deathYear: HTMLInputElement
     imgURL: HTMLInputElement
     content: HTMLTextAreaElement
+    author_bio: HTMLTextAreaElement
     reset: () => void
 }

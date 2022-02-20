@@ -13,27 +13,52 @@ type Props = {
 export default function AddNewQuote({ setModal, quotes, setQuotes, modal }: Props) {
     const navigate = useNavigate()
 
-    function addNewQuote(firstName: string, lastName: string, born: number, death: number, image: string, content: string) {
-        return fetch(`http://localhost:4000/quotes`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ firstName: firstName, lastName: lastName, born: born, death: death, image: image, content: content })
-        }).then(res => res.json())
-            .then(res => {
-                if (res.ok) {
-                    const newQuotes = JSON.parse(JSON.stringify(quotes))
-                    newQuotes.push(res)
-                    setQuotes(newQuotes)
-                } else {
-                    throw Error('Something went wrong! Please check the input types.')
-                }
+    // function addNewQuote(firstName: string, lastName: string, born: number, death: number, image: string, content: string) {
+    //     return fetch(`http://localhost:4000/quotes`, {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify({ firstName: firstName, lastName: lastName, born: born, death: death, image: image, content: content })
+    //     }).then(res => res.json())
+    //         .then(res => {
+    //             if (res.ok) {
+    //                 const newQuotes = JSON.parse(JSON.stringify(quotes))
+    //                 newQuotes.push(res)
+    //                 setQuotes(newQuotes)
+    //             } else {
+    //                 throw Error('Something went wrong! Please check the input types.')
+    //             }
 
-            }).catch(err => {
-                alert(err)
+    //         }).catch(err => {
+    //             alert(err)
+
+    //         })
+    // }
+
+    function addNewQuote(firstName: string, lastName: string, born: number, death: number, image: string, content: string, bio: string) {
+        return fetch(`http://localhost:4000/authors`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ firstName: firstName, lastName: lastName, born: born, death: death, image: image, bio })
+        }).then(res => res.json()).then(res => {
+            console.log('res:', res)
+            fetch(`http://localhost:4000/quotes`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ content: content, authorId: res.id })
+            }).then(res => res.json()).then(res => {
+
+                const newQuotes = JSON.parse(JSON.stringify(quotes))
+                newQuotes.push(res)
+                setQuotes(newQuotes)
 
             })
+        })
     }
 
     return (
@@ -53,9 +78,9 @@ export default function AddNewQuote({ setModal, quotes, setQuotes, modal }: Prop
                     const death = Number(formEl.deathYear.value);
                     const image = formEl.imgURL.value;
                     const quoteContent = formEl.content.value;
+                    const bio = formEl.author_bio.value;
 
-
-                    addNewQuote(authorFirstName, authorLastName, born, death, image, quoteContent)
+                    addNewQuote(authorFirstName, authorLastName, born, death, image, quoteContent, bio)
                     formEl.reset()
                     setModal('')
 
@@ -66,6 +91,7 @@ export default function AddNewQuote({ setModal, quotes, setQuotes, modal }: Prop
                     <input type="text" name="deathYear" placeholder='Year of death' />
                     <input type="text" name="imgURL" placeholder='Image URL' required />
                     <textarea name="content" id="" cols={30} rows={5} placeholder='Enter the quote....' required ></textarea>
+                    <textarea name="author_bio" id="" cols={30} rows={5} placeholder="Bio..."></textarea>
                     <button type='submit'>Submit</button>
                 </form>
             </div>
