@@ -13,28 +13,7 @@ type Props = {
 export default function AddNewQuote({ setModal, quotes, setQuotes, modal }: Props) {
     const navigate = useNavigate()
 
-    // function addNewQuote(firstName: string, lastName: string, born: number, death: number, image: string, content: string) {
-    //     return fetch(`http://localhost:4000/quotes`, {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify({ firstName: firstName, lastName: lastName, born: born, death: death, image: image, content: content })
-    //     }).then(res => res.json())
-    //         .then(res => {
-    //             if (res.ok) {
-    //                 const newQuotes = JSON.parse(JSON.stringify(quotes))
-    //                 newQuotes.push(res)
-    //                 setQuotes(newQuotes)
-    //             } else {
-    //                 throw Error('Something went wrong! Please check the input types.')
-    //             }
 
-    //         }).catch(err => {
-    //             alert(err)
-
-    //         })
-    // }
 
     function addNewQuote(firstName: string, lastName: string, born: number, death: number, image: string, content: string, bio: string) {
         return fetch(`http://localhost:4000/authors`, {
@@ -52,10 +31,22 @@ export default function AddNewQuote({ setModal, quotes, setQuotes, modal }: Prop
                 },
                 body: JSON.stringify({ content: content, authorId: res.id })
             }).then(res => res.json()).then(res => {
+                fetch(`http://localhost:4000/authors/${res.authorId}`).then(response => response.json()).then(response => {
+                    const newQuotes = JSON.parse(JSON.stringify(quotes))
+                    const newQuote = {
+                        id: res.id,
+                        content: res.content,
+                        firstName: response.firstName,
+                        lastName: response.lastName,
+                        born: response.born,
+                        death: response.death,
+                        image: response.image,
+                        bio: response.bio
+                    }
+                    newQuotes.push(newQuote)
+                    setQuotes(newQuotes)
+                })
 
-                const newQuotes = JSON.parse(JSON.stringify(quotes))
-                newQuotes.push(res)
-                setQuotes(newQuotes)
 
             })
         })
