@@ -22,7 +22,7 @@ export default function QuoteCard({ quote, setSelectedQuote, setModal }: Props) 
             }} className='delete-btn'>X</button>
             <i className="fas fa-quote-left"></i>
             <span className='quote-content'>{quote.content}</span>
-            <span className='author'>{`- ${quote.author.firstName} ${quote.author.lastName}`}</span>
+            <span className='author'>{`- ${quote.firstName} ${quote.lastName}`}</span>
         </div>
     )
 }

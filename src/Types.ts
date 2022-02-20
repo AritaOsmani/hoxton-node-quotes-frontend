@@ -1,14 +1,14 @@
 export type Quote = {
     id: number
     content: string
-    author: {
-        firstName: string
-        lastName: string
-        born: number
-        death?: number
-        image: string,
-        bio: string
-    }
+
+    firstName: string
+    lastName: string
+    born: number
+    death?: number
+    image: string,
+    bio: string
+
 }
 
 export type FormType = HTMLFormElement & {

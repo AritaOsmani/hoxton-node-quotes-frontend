@@ -10,7 +10,7 @@ export default function DetailsPageQuote({ quote }: Props) {
         <div className='quote-container'>
             <i className="fas fa-quote-left"></i>
             <span className='quote-content'>{quote.content}</span>
-            <span className='author'>{`-${quote.author.firstName} ${quote.author.lastName}`}</span>
+            <span className='author'>{`-${quote.firstName} ${quote.lastName}`}</span>
         </div>
     )
 }
